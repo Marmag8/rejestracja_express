@@ -1,0 +1,49 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+header{
+    background-color: #0066ff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer {
+    background-color: #0066ff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+header nav a{
+    font-size: 20px;
+}
+
+header a:hover{
+    text-decoration: underline;
+}
+
+p {
+    font-weight: bold;
+}

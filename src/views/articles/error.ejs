@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= Title %></title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+        <h1><%= Title %></h1>
+        <ul>
+            <% if (errors && errors.length > 0) { %>
+                <% errors.forEach(function(error) { %>
+                    <li><%= error %></li>
+                <% }); %>
+                </ul>
+
+                <h2>Wprowawdzone dane:</h2>
+                <p>Tytuł: <%= values.title %></p>
+                <p>Autor: <%= values.author %></p>
+                <p>Treść: <%= values.content %></p>
+
+                <a href="articles/new">Spróbuj ponownie</a>
+            <% } else { %>
+                </ul>
+                <a href="new">Spróbuj ponownie</a>
+            <% } %>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>

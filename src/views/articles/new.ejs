@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= Title %></title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+        <h2>Dodaj nowy artykuł</h2>
+
+        <% if (errors && errors.length > 0) { %>
+            <div class="errors">
+                <ul>
+                    <% errors.forEach(function(error) { %>
+                        <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% } %>
+
+        <form action="/articles" method="POST">
+            <div>
+                <label for="title">Tytuł:</label>
+                <input type="text" id="title" name="title" value="<%= values.title %>" required>
+            </div>
+            <div>
+                <label for="author">Autor:</label>
+                <input type="text" id="author" name="author" value="<%= values.author %>" required>
+            </div>
+            <div>
+                <label for="content">Treść:</label>
+                <textarea id="content" name="content" rows="10" required><%= values.content %></textarea>
+            </div>
+            <button type="submit">Dodaj artykuł</button>
+        </form>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
