@@ -2,8 +2,8 @@ const {readUsers, writeUsers} = require('../models/storage');
 const crypto = require('crypto');
 
 const algorithm = 'aes-256-cbc';
-key = crypto.randomBytes(32);
-iv = crypto.randomBytes(16);
+key = Buffer.alloc(32);
+iv = Buffer.alloc(16);
 
 function slugify(username) {
     return username
