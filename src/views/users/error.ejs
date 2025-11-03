@@ -17,17 +17,14 @@
                     <li><%= error %></li>
                 <% }); %>
                 </ul>
-
-                <h2>Wprowawdzone dane:</h2>
-                <p>Nazwa użytkownika: <%= values.username %></p>
-                <p>Wiek: <%= values.age %></p>
-                <p>Hasło: <%= values.password %></p>
-
-                <a href="users/new">Spróbuj ponownie</a>
-            <% } else { %>
-                </ul>
-                <a href="new">Spróbuj ponownie</a>
             <% } %>
+
+            <h2>Wprowawdzone dane:</h2>
+            <p>Nazwa użytkownika: <%= values.username %></p>
+            <% if (values.age) { %>
+            <p>Wiek: <%= values.age %></p>
+            <% } %>
+            <p>Hasło: <%= values.password %></p>
     </main>
 
     <%- include('../partials/footer') %>

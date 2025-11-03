@@ -13,8 +13,9 @@
         <article>
             <h1><%= user.username %></h1>
             <p class="meta">
-                <%= user.age %> lat <br>
-                Konto utworzono: <%= user.createdAt %>
+                <p><%= user.mail %></p>
+                <p><%= user.age %> lat</p>
+                <p>Konto utworzono: <%= user.createdAt %></p>
             </p>
             <!--<div class="content"><p><%= user.content %></p></div>-->
             <a href="/">Powrót</a>

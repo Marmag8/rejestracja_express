@@ -1,4 +1,9 @@
 const {readUsers, writeUsers} = require('../models/storage');
+const crypto = require('crypto');
+
+const algorithm = 'aes-256-cbc';
+key = crypto.randomBytes(32);
+iv = crypto.randomBytes(16);
 
 function slugify(username) {
     return username
@@ -10,6 +15,20 @@ function slugify(username) {
         .replace(/-+/g, '');
 }
 
+function hash(password) {
+    const encrypter = crypto.createCipheriv(algorithm, key, iv);
+    let hashed = encrypter.update(password, 'utf8', 'hex');
+    hashed += encrypter.final('hex');
+    return hashed;
+}
+
+function unhash(hashedPassword) {
+    const decrypter = crypto.createDecipheriv(algorithm, key, iv);
+    let password = decrypter.update(hashedPassword, 'hex', 'utf8');
+    password += decrypter.final('utf8');
+    return password;
+}
+
 async function getAllUsers() { return await readUsers(); }
 
 async function getUserBySlug(slug) {
@@ -17,7 +36,7 @@ async function getUserBySlug(slug) {
     return users.find(user => user.slug === slug);
 }
 
-async function createUser(username, age, password) {
+async function createUser(username, age, password, mail) {
     const users = await readUsers();
     const slug = slugify(username);
 
@@ -30,10 +49,11 @@ async function createUser(username, age, password) {
     const newUser = { 
         id: Date.now().toString(),
         username,
-        age, 
+        age,
+        mail,
         password, 
-        slug: uniqueSlug, 
-        createdAt: new Date().toISOString() 
+        slug: uniqueSlug,
+        createdAt: new Date().toISOString()
     };
 
     users.unshift(newUser);
@@ -41,4 +61,4 @@ async function createUser(username, age, password) {
     return newUser;
 }
 
-module.exports = { getAllUsers, getUserBySlug, createUser };
+module.exports = { getAllUsers, getUserBySlug, createUser, slugify, hash, unhash };
