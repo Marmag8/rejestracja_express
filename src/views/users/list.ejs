@@ -10,15 +10,15 @@
     <%- include('../partials/header') %>
 
     <main>
-        <h1>Lista Artykułów</h1>
+        <h1>Lista Użytkowników</h1>
 
         <ul>
-            <% if (articles.length === 0) { %>
-                <li>Brak artykułów do wyświetlenia.</li>
+            <% if (users.length === 0) { %>
+                <li>Brak użytkowników do wyświetlenia.</li>
             <% } else { %>
-                <% articles.forEach(function(article) { %>
+                <% users.forEach(function(user) { %>
                     <li>
-                        <a href="/articles/<%= article.slug %>"><%= article.title %></a>
+                        <a href="/users/<%= user.slug %>"><%= user.username %></a>
                     </li>
                 <% }); %>
             <% } %>

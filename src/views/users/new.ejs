@@ -10,7 +10,7 @@
     <%- include('../partials/header') %>
 
     <main>
-        <h2>Dodaj nowy artykuł</h2>
+        <h2>Utwórz konto</h2>
 
         <% if (errors && errors.length > 0) { %>
             <div class="errors">
@@ -22,20 +22,20 @@
             </div>
         <% } %>
 
-        <form action="/articles" method="POST">
+        <form action="/users" method="POST">
             <div>
-                <label for="title">Tytuł:</label>
-                <input type="text" id="title" name="title" value="<%= values.title %>" required>
+                <label for="username">Nazwa użytkownika:</label>
+                <input type="text" id="username" name="username" value="<%= values.username %>" required>
             </div>
             <div>
-                <label for="author">Autor:</label>
-                <input type="text" id="author" name="author" value="<%= values.author %>" required>
+                <label for="age">Wiek:</label>
+                <input type="number" id="age" name="age" value="<%= values.age %>" min="1" required>
             </div>
             <div>
-                <label for="content">Treść:</label>
-                <textarea id="content" name="content" rows="10" required><%= values.content %></textarea>
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" name="password" value="<%= values.password %>" required>
             </div>
-            <button type="submit">Dodaj artykuł</button>
+            <button type="submit">Utwórz</button>
         </form>
     </main>
 

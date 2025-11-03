@@ -11,11 +11,12 @@
 
     <main>
         <article>
-            <h1><%= article.title %></h1>
+            <h1><%= user.username %></h1>
             <p class="meta">
-                Autor: <%= article.author %> | Data publikacji: <%= article.createdAt %>
+                <%= user.age %> lat <br>
+                Konto utworzono: <%= user.createdAt %>
             </p>
-            <div class="content"><p><%= article.content %></p></div>
+            <!--<div class="content"><p><%= user.content %></p></div>-->
             <a href="/">Powrót</a>
         </article>
     </main>
